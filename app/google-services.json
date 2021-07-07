@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "1072166171323",
+    "project_id": "instatexnopos",
+    "storage_bucket": "instatexnopos.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1072166171323:android:efb4c1061acd4d4ef26f9e",
+        "android_client_info": {
+          "package_name": "com.example.instatexnopos"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1072166171323-fhn1b013hl2rcoftk8f2nktpth1mh7up.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.instatexnopos",
+            "certificate_hash": "8a3183c24461304698760a10a1114c0fb297aab9"
+          }
+        },
+        {
+          "client_id": "1072166171323-s99gbsg3f2ol1kc5beqk7rk5mvua92fh.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCDxOhBf2Saf1vDblSNnNY4Zxwl8TkrjVQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1072166171323-s99gbsg3f2ol1kc5beqk7rk5mvua92fh.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
