@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">InstaTexnopos</string>
+    <string name="input_your_email">Input your email</string>
+    <string name="input_your_password">Input your password</string>
+    <string name="input_your_password">Input your password</string>
+    <string name="confirm_your_password">Confirm your password</string>
 </resources>

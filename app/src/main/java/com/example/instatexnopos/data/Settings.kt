@@ -1,7 +1,6 @@
-package com.example.instatexnopos
+package com.example.instatexnopos.data
 
 import android.content.Context
-import android.content.SharedPreferences
 
 class Settings(context: Context) {
     companion object{
