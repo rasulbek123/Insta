@@ -26,15 +26,15 @@ class SignUpFragment:Fragment(R.layout.fragment_sign_up) {
         btnsignUp.setOnClickListener {
             var success = true
             if (etEmail.text.isNullOrEmpty()) {
-                etEmail.error = "Fill th field"
+                etEmail.error = getString(R.string.fill_the_field)
                 success = false
             }
             if (etInputPassword.text.isNullOrEmpty()) {
-                etInputPassword.error = "Fill the field"
+                etInputPassword.error = getString(R.string.fill_the_field)
                 success = false
             }
             if (binding.etConfirmPassword.text.isNullOrEmpty()) {
-                etInputPassword.error = "Fill the field"
+                etInputPassword.error = getString(R.string.fill_the_field)
                 success = false
             }
             if (!success) return@setOnClickListener

@@ -14,6 +14,7 @@
             android:id="@+id/etEmail"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:inputType="textEmailAddress"
             android:layout_marginHorizontal="@dimen/margin_standart"
             android:hint="@string/input_your_email"
             android:background="@drawable/shape"/>
@@ -29,6 +30,7 @@
             android:id="@+id/etInputPassword"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:inputType="textPassword"
             android:layout_marginHorizontal="@dimen/margin_standart"
             android:hint="@string/input_your_password"
             android:background="@drawable/shape" />
@@ -45,6 +47,7 @@
             android:id="@+id/etConfirmPassword"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:inputType="textPassword"
             android:layout_marginHorizontal="@dimen/margin_standart"
             android:hint="@string/confirm_your_password"
             android:background="@drawable/shape" />

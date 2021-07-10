@@ -1,6 +1,7 @@
 package com.example.instatexnopos.di
 
 import com.example.instatexnopos.data.FirebaseHelper
+import com.example.instatexnopos.ui.auth.signin.SingInViewModel
 import com.example.instatexnopos.ui.auth.signup.SignUpViewModel
 import com.google.firebase.auth.FirebaseAuth
 import org.koin.androidx.viewmodel.dsl.viewModel
@@ -12,4 +13,5 @@ val dataModule = module {
 }
 val viewModelModule = module {
     viewModel{SignUpViewModel(get())}
+    viewModel{SingInViewModel(get())}
 }
