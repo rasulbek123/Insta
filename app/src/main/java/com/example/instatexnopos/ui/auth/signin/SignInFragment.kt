@@ -10,17 +10,21 @@ import androidx.navigation.Navigation
 import androidx.navigation.fragment.findNavController
 import com.example.instatexnopos.R
 import com.example.instatexnopos.data.ResourceState
+import com.example.instatexnopos.data.Settings
 import com.example.instatexnopos.databinding.FragmentSignInBinding
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class SignInFragment:Fragment(R.layout.fragment_sign_in) {
     private lateinit var binding:FragmentSignInBinding
     private val viewModel:SingInViewModel by viewModel()
+    lateinit var settings: Settings
     private lateinit var  navCantroller:NavController
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding = FragmentSignInBinding.bind(view)
         navCantroller=Navigation.findNavController(view)
+        setObservers()
+        settings = Settings(requireContext())
         binding.apply {
             btnsignIn.setOnClickListener {
                 var success = true
@@ -33,15 +37,15 @@ class SignInFragment:Fragment(R.layout.fragment_sign_in) {
                     success = false
                 }
                 if(!success) return@setOnClickListener
-                else{
-                    viewModel.signIn(etEmail.text.toString(),etPassword.text.toString())
-                }
-                signUp.setOnClickListener {
-                    navCantroller.navigate(R.id.action_signInFragment_to_signUpFragment)
+                else {
+                    viewModel.signIn(etEmail.text.toString(), etPassword.text.toString())
                 }
             }
+            binding.signUp.setOnClickListener {
+                val action = SignInFragmentDirections.actionSignInFragmentToSignUpFragment()
+                navCantroller.navigate(action)
+            }
         }
-        setObservers()
 
     }
     private fun setObservers (){
@@ -52,6 +56,7 @@ class SignInFragment:Fragment(R.layout.fragment_sign_in) {
                         isEnabled(true)
                     }
                     ResourceState.SUCCESS->{
+                        settings.signedIn = true
                         navCantroller.navigate(R.id.action_signInFragment_to_mainFragment)
                     }
                     ResourceState.ERROR->{

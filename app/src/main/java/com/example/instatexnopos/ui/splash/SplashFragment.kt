@@ -12,7 +12,6 @@ import com.example.instatexnopos.databinding.FragmentSplashBinding
 
 class SplashFragment:Fragment(R.layout.fragment_splash) {
     private lateinit var binding:FragmentSplashBinding
-    val settings = Settings(requireContext())
     private lateinit var navController: NavController
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -20,15 +19,18 @@ class SplashFragment:Fragment(R.layout.fragment_splash) {
         binding = FragmentSplashBinding.bind(view)
         navController = Navigation.findNavController(view)
         binding.lottieView.setMaxProgress(0.6f)
+        val settings = Settings(requireContext())
         binding.lottieView.addAnimatorListener(object: Animator.AnimatorListener {
             override fun onAnimationStart(animation: Animator?) {
             }
 
             override fun onAnimationEnd(animation: Animator?) {
-                if(settings.signIn){
-                    navController.navigate(R.id.action_splashFragment_to_mainFragment)
+                if(settings.signedIn){
+                    val action = SplashFragmentDirections.actionSplashFragmentToMainFragment()
+                    navController.navigate(action)
                 }else{
-                    navController.navigate(R.id.action_splashFragment_to_signInFragment)
+                    val action = SplashFragmentDirections.actionSplashFragmentToSignInFragment()
+                    navController.navigate(action)
                 }
             }
 
