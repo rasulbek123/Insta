@@ -9,4 +9,8 @@
     <string name="btn_menu_post">Post</string>
     <string name="btn_menu_favorite">Like</string>
     <string name="btn_menu_profil">Profil</string>
+    <string name="posts">Публикации</string>
+    <string name="followers">Подписчики</string>
+    <string name="following">Подписки</string>
+    <string name="_profile">Редактировать профиль </string>
 </resources>
