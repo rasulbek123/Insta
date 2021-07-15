@@ -14,11 +14,22 @@ class SignUpViewModel(private val firebaseHelper: FirebaseHelper):ViewModel() {
     mutableSignUpStatus.value = Resource.loading()
         firebaseHelper.signUp(email,password,
             {
-                mutableSignUpStatus.value = Resource.success(null)
+                addUserToDb()
+
             },
             {
                 mutableSignUpStatus.value = Resource.error(it)
             }
             )
+    }
+    private fun addUserToDb(){
+        firebaseHelper.addUserToDb(
+            {
+                mutableSignUpStatus.value = Resource.success(null)
+            },
+            {
+                mutableSignUpStatus.value = Resource.error(it)
+            }
+        )
     }
 }

@@ -1,8 +1,10 @@
 package com.example.instatexnopos.data
 
+import com.example.instatexnopos.data.model.User
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.FirebaseFirestore
 
-class FirebaseHelper(private val auth:FirebaseAuth) {
+class FirebaseHelper(private val auth:FirebaseAuth,private val db:FirebaseFirestore) {
 
     fun signUp(
         email:String,
@@ -23,6 +25,16 @@ class FirebaseHelper(private val auth:FirebaseAuth) {
         onSucces:()->Unit,
         onFailure:(mgs:String)->Unit){
         auth.signInWithEmailAndPassword(email,password)
+            .addOnSuccessListener {
+                onSucces.invoke()
+            }
+            .addOnFailureListener {
+                onFailure.invoke(it.localizedMessage)
+            }
+    }
+    fun addUserToDb(onSucces: () -> Unit,onFailure: (mgs: String) -> Unit){
+        val user = User(auth.currentUser!!.uid, auth.currentUser!!.email!!)
+        db.collection(N.USERS).document(user.uid).set(user)
             .addOnSuccessListener {
                 onSucces.invoke()
             }
