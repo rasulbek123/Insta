@@ -1,10 +1,11 @@
-package com.example.instatexnopos.data
+package com.example.instatexnopos.data.halpers
 
+import com.example.instatexnopos.data.N
 import com.example.instatexnopos.data.model.User
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 
-class FirebaseHelper(private val auth:FirebaseAuth,private val db:FirebaseFirestore) {
+class AuthHalper(private val auth:FirebaseAuth, private val db:FirebaseFirestore) {
 
     fun signUp(
         email:String,

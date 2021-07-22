@@ -17,7 +17,7 @@
         android:icon="@drawable/ic_baseline_favorite_border_24"
         android:title="@string/btn_menu_favorite"/>
     <item
-        android:id="@+id/profilFragment"
+        android:id="@+id/profileFragment"
         android:icon="@drawable/ic_outline_person_24"
         android:title="@string/btn_menu_profil"/>
 </menu>

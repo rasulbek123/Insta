@@ -10,7 +10,9 @@
         android:supportsRtl="true"
         android:name=".App"
         android:theme="@style/Theme.InstaTexnopos">
-        <activity android:name=".MainActivity">
+        <activity android:name=".MainActivity"
+            android:theme="@style/Theme.MaterialComponents.Light.NoActionBar"
+            >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

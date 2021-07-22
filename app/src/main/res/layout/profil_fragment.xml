@@ -27,8 +27,7 @@
         app:layout_constraintTop_toBottomOf="@id/toolbar"
         app:layout_constraintStart_toStartOf="parent"
         android:layout_marginTop="@dimen/margin_small"
-        android:layout_marginStart="@dimen/margin_standart"
-        android:src="@drawable/user"/>
+        android:layout_marginStart="@dimen/margin_standart" />
     <LinearLayout
         android:id="@+id/llPost"
         android:layout_width="0dp"
@@ -53,7 +52,7 @@
             android:id="@+id/tvPostTitle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="@dimen/text_size_toolbar"
+            android:textSize="@dimen/text_size_standart"
             android:text="@string/posts"
             android:maxLines="1"
             android:ellipsize="end"
@@ -84,7 +83,7 @@
             android:id="@+id/tvFollowersTitle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="@dimen/text_size_toolbar"
+            android:textSize="@dimen/text_size_standart"
             android:text="@string/followers"
             android:maxLines="1"
             android:ellipsize="end"
@@ -115,7 +114,7 @@
             android:id="@+id/tvFollowingTitle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="@dimen/text_size_toolbar"
+            android:textSize="@dimen/text_size_standart"
             android:text="@string/following"
             android:maxLines="1"
             android:ellipsize="end"
@@ -144,6 +143,7 @@
         app:layout_constraintTop_toBottomOf="@id/tvName"
         android:layout_marginStart="@dimen/margin_standart"
         app:layout_constraintStart_toStartOf="parent"/>
+
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btnEdit"
         android:layout_width="match_parent"
@@ -153,8 +153,7 @@
         style="@style/Widget.MaterialComponents.Button.OutlinedButton"
         app:layout_constraintTop_toBottomOf="@id/tvBiography"
         android:layout_marginTop="@dimen/margin_standart"
-        android:text="@string/_profile"
-        android:textSize="@dimen/text_size_standart"
+        android:text="@string/edit_profile"
         android:textAllCaps="false"
         android:textColor="@color/black"
         android:ellipsize="end"
@@ -170,4 +169,13 @@
         android:orientation="vertical"
         app:spanCount="3"
         app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"/>
+    <ProgressBar
+        android:id="@+id/loading"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:visibility="gone"/>
 </androidx.constraintlayout.widget.ConstraintLayout>
