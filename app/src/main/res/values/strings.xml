@@ -13,4 +13,8 @@
     <string name="followers">Подписчики</string>
     <string name="following">Подписки</string>
     <string name="edit_profile">Редактировать профиль </string>
+    <string name="edit_profile">Редактировать профиль</string>
+    <string name="edit_profile_image">Изменить фото профиля</string>
+    <string name="edit_name">Имя</string>
+    <string name="edit_biography">Биография</string>
 </resources>
