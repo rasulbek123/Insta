@@ -59,5 +59,14 @@
         android:id="@+id/mainFragment"
         android:name="com.example.instatexnopos.ui.MainFragment"
         android:label="MainFragment"
-        tools:layout="@layout/fragment_main"/>
+        tools:layout="@layout/fragment_main">
+        <action
+            android:id="@+id/action_mainFragment_to_editProfleFragment"
+            app:destination="@id/editProfleFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/editProfleFragment"
+        android:name="com.example.instatexnopos.ui.profil.edit.EditProfleFragment"
+        android:label="EditProfleFragment"
+        tools:layout="@layout/fragment_profile_edit"/>
 </navigation>

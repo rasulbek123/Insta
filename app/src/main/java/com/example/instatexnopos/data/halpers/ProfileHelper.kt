@@ -18,4 +18,13 @@ class ProfileHelper(private val auth:FirebaseAuth,private val db:FirebaseFiresto
                 onFailure.invoke(it.localizedMessage)
             }
     }
+    fun editProfile(user:User,onSuccess: () -> Unit,onFailure: (msg: String?) -> Unit){
+        db.document("${N.USERS}/${user.uid}").set(user)
+            .addOnSuccessListener {
+                onSuccess.invoke()
+            }
+            .addOnFailureListener {
+                onFailure.invoke(it.localizedMessage)
+            }
+    }
 }

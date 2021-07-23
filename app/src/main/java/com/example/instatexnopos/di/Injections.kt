@@ -5,6 +5,7 @@ import com.example.instatexnopos.data.halpers.ProfileHelper
 import com.example.instatexnopos.ui.auth.signin.SingInViewModel
 import com.example.instatexnopos.ui.auth.signup.SignUpViewModel
 import com.example.instatexnopos.ui.profil.ProfileViewModel
+import com.example.instatexnopos.ui.profil.edit.EditProfileViewModel
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import org.koin.androidx.viewmodel.dsl.viewModel
@@ -20,4 +21,5 @@ val viewModelModule = module {
     viewModel{SignUpViewModel(get())}
     viewModel{SingInViewModel(get())}
     viewModel{ProfileViewModel(get())}
+    viewModel { EditProfileViewModel(get()) }
 }
