@@ -6,6 +6,7 @@ import com.example.instatexnopos.data.halpers.ProfileHelper
 import com.example.instatexnopos.ui.addpost.AddPostViewModel
 import com.example.instatexnopos.ui.auth.signin.SingInViewModel
 import com.example.instatexnopos.ui.auth.signup.SignUpViewModel
+import com.example.instatexnopos.ui.home.HomeViewModel
 import com.example.instatexnopos.ui.profil.ProfileViewModel
 import com.example.instatexnopos.ui.profil.edit.EditProfileViewModel
 import com.google.firebase.auth.FirebaseAuth
@@ -28,4 +29,5 @@ val viewModelModule = module {
     viewModel{ProfileViewModel(get(),get())}
     viewModel { EditProfileViewModel(get()) }
     viewModel { AddPostViewModel(get())}
+    viewModel {HomeViewModel(get())}
 }

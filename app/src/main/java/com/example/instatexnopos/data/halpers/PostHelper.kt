@@ -42,4 +42,14 @@ class PostHelper(private val db:FirebaseFirestore,private val auth:FirebaseAuth,
                 onFailure.invoke(it.localizedMessage)
             }
     }
+    fun getUsersPosts(onSuccess: (post:List<Post>) -> Unit,onFailure: (msg: String?) -> Unit){
+        db.collection(N.POSTS).get()
+            .addOnSuccessListener {
+                val res = it.documents.map { doc->doc.toObject(Post::class.java)!! }
+                onSuccess.invoke(res)
+            }
+            .addOnFailureListener {
+                onFailure.invoke(it.localizedMessage)
+            }
+    }
 }
