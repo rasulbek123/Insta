@@ -16,4 +16,6 @@
     <string name="edit_profile_image">Изменить фото профиля</string>
     <string name="edit_name">Имя</string>
     <string name="edit_biography">Биография</string>
+    <string name="write_a_interesting_story">Write a interesting story</string>
+    <string name="send_a_post">Send a post</string>
 </resources>

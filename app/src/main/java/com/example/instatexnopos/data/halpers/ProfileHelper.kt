@@ -1,9 +1,12 @@
 package com.example.instatexnopos.data.halpers
 
 import com.example.instatexnopos.data.N
+import com.example.instatexnopos.data.model.Post
 import com.example.instatexnopos.data.model.User
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.Query
+import java.util.*
 
 class ProfileHelper(private val auth:FirebaseAuth,private val db:FirebaseFirestore) {
     fun getProfileData(onSuccess:(user:User)->Unit,onFailure:(msg:String?)->Unit){
@@ -27,4 +30,5 @@ class ProfileHelper(private val auth:FirebaseAuth,private val db:FirebaseFiresto
                 onFailure.invoke(it.localizedMessage)
             }
     }
+
 }
