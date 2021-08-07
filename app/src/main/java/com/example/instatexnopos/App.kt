@@ -1,6 +1,7 @@
 package com.example.instatexnopos
 
 import android.app.Application
+import com.example.instatexnopos.di.adapterModule
 import com.example.instatexnopos.di.dataModule
 import com.example.instatexnopos.di.viewModelModule
 import org.koin.android.ext.koin.androidContext

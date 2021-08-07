@@ -13,12 +13,19 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 class HomeFragment:Fragment(R.layout.fragment_home) {
  private lateinit var binding:FragmentHomeBinding
  private val viewModel:HomeViewModel by viewModel()
-    private val adapter=HomePostAdapter()
+    private val adapter = HomePostAdapter()
  override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
      binding = FragmentHomeBinding.bind(view)
-     setUpObservers()
+
      binding.rvPostHome.adapter = adapter
+     adapter.setOnDoubleClickedListener {post->
+         viewModel.onDoubleClicked(post)
+     }
+adapter.setOnLikedListener { postId->
+  //  viewModel.setOnLikedListener(postId,userId)
+}
+     setUpObservers()
      viewModel.getUsersPosts()
     }
     private fun setUpObservers(){

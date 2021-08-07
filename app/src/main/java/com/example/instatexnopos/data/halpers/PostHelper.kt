@@ -32,8 +32,22 @@ class PostHelper(private val db:FirebaseFirestore,private val auth:FirebaseAuth,
         }
 
     }
-    fun getCurrentUsersPosts(onSuccess:(posts:List<Post>)->Unit,onFailure: (msg: String?) -> Unit){
-        db.collection(N.POSTS). whereEqualTo("userId",auth.currentUser!!.uid).get()
+
+    fun getUsersPosts(onSuccess: (post:List<Post>) -> Unit,onFailure: (msg: String?) -> Unit){
+        db.collection(N.POSTS).whereEqualTo("userId",auth.currentUser!!.uid)
+            .orderBy("createdDate",Query.Direction.DESCENDING)
+            .get()
+            .addOnSuccessListener {
+                val res = it.documents.map { doc->doc.toObject(Post::class.java)!! }
+                onSuccess.invoke(res)
+            }
+            .addOnFailureListener {
+                onFailure.invoke(it.localizedMessage)
+            }
+    }
+    fun getAllPosts(onSuccess:(posts:List<Post>)->Unit,onFailure: (msg: String?) -> Unit){
+        db.collection(N.POSTS).orderBy("createdDate",Query.Direction.DESCENDING)
+            .get()
             .addOnSuccessListener {
                 val res = it.documents.map{ doc -> doc.toObject(Post::class.java)!!}
                 onSuccess.invoke(res)
@@ -42,14 +56,39 @@ class PostHelper(private val db:FirebaseFirestore,private val auth:FirebaseAuth,
                 onFailure.invoke(it.localizedMessage)
             }
     }
-    fun getUsersPosts(onSuccess: (post:List<Post>) -> Unit,onFailure: (msg: String?) -> Unit){
-        db.collection(N.POSTS).get()
+    fun onDoubleClicked(post:Post,onSuccess: (count:Int) -> Unit,
+    onFailure: (msg: String?) -> Unit){
+        db.document("${N.USERS}/${auth.currentUser!!.uid}/${N.LIKED_POST}/${post.id}")
+            .get()
             .addOnSuccessListener {
-                val res = it.documents.map { doc->doc.toObject(Post::class.java)!! }
-                onSuccess.invoke(res)
+                if(!it.exists()){
+                    getPostLikesCount(post.id,onSuccess,onFailure)
+                }else{
+                   addPostToLikedPosts(post,onSuccess, onFailure)
+                }
             }
             .addOnFailureListener {
-                onFailure.invoke(it.localizedMessage)
+                onFailure.invoke(it.message)
+            }
+    }
+    private fun addPostToLikedPosts(post:Post,onSuccess: (count:Int) -> Unit,
+                                    onFailure: (msg: String?) -> Unit){
+        db.collection(N.USERS).document(auth.currentUser!!.uid).collection(N.LIKED_POST).document(post.id).set(post)
+            .addOnSuccessListener {
+                getPostLikesCount(post.id,onSuccess,onFailure)
+            }
+            .addOnFailureListener {
+            onFailure.invoke(it.message)
+            }
+    }
+    private fun getPostLikesCount(postId:String,onSuccess: (count:Int) -> Unit,
+                                  onFailure: (msg: String?) -> Unit){
+        db.collection(N.POSTS).document(postId).get()
+            .addOnSuccessListener {
+                onSuccess.invoke(it["likes"].toString().toInt())
+            }
+            .addOnFailureListener {
+                onFailure.invoke(it.message)
             }
     }
 }

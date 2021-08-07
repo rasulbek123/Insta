@@ -12,7 +12,7 @@ class HomeViewModel(private val postHelper: PostHelper ):ViewModel() {
     val homePost: LiveData<Resource<List<Post>>> get() = mutableHomePost
     fun getUsersPosts(){
         mutableHomePost.value = Resource.loading()
-        postHelper.getUsersPosts(
+        postHelper.getAllPosts(
             {
                 mutableHomePost.value = Resource.success(it)
             },
@@ -20,5 +20,17 @@ class HomeViewModel(private val postHelper: PostHelper ):ViewModel() {
                 mutableHomePost.value  = Resource.error(it)
             }
         )
+    }
+    private var mutableLike:MutableLiveData<Resource<Int>> = MutableLiveData()
+    val like:LiveData<Resource<Int>> get() = mutableLike
+    fun onDoubleClicked(post: Post) {
+        mutableLike.value = Resource.loading()
+        postHelper.onDoubleClicked(post,
+            {
+                mutableLike.value = Resource.success(it)
+            },
+            {
+                mutableLike.value = Resource.error(it)
+            })
     }
 }
